@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "176300220727",
+    "firebase_url": "https://tito-parent-app-demo.firebaseio.com",
+    "project_id": "tito-parent-app-demo",
+    "storage_bucket": "tito-parent-app-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176300220727:android:5f18db9cabb6deecbefab2",
+        "android_client_info": {
+          "package_name": "com.tito.parentapp_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176300220727-fk7kn911fhpj6gvfgcfqrk7scjv7drc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz-UG9yV2fsyOpMiFgaYKZMKGrZ9-aUAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176300220727-fk7kn911fhpj6gvfgcfqrk7scjv7drc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
