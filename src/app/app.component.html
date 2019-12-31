@@ -2,16 +2,23 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content">
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar class="ion-text-center">
           <img src="../assets/imgs/TITOLogo.png" style="width: 150px" />
         </ion-toolbar>
+        <ion-list>
+          <ion-item color="primary">
+            <h2 class="ion-text-wrap">
+              {{ "Ravi Babu Pathuri" | uppercase }}
+            </h2>
+          </ion-item>
+          <ion-item color="primary">
+            <p>{{ "ADM0007" }} >> {{ "Grage I" }} >> {{ "A" }}</p>
+          </ion-item>
+        </ion-list>
       </ion-header>
 
       <ion-content>
         <ion-list lines="none">
-          <ion-list-header>
-            Navigate
-          </ion-list-header>
           <ion-menu-toggle
             autoHide="false"
             *ngFor="let p of appPages; let i = index"
@@ -44,22 +51,20 @@
             >
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label>
-                Account
+                All Kids
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
             <ion-item
-              routerLink="/support"
+              routerLink="/account"
               routerLinkActive="active"
               routerDirection="root"
               detail="false"
             >
-              <ion-icon slot="start" name="help"></ion-icon>
-              <ion-label>
-                Support
-              </ion-label>
+              <ion-icon slot="start" name="person-add"></ion-icon>
+              <ion-label> Add Student </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
@@ -89,46 +94,6 @@
               <ion-label>
                 Login
               </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item
-              routerLink="/support"
-              routerLinkActive="active"
-              routerDirection="root"
-              detail="false"
-            >
-              <ion-icon slot="start" name="help"></ion-icon>
-              <ion-label>
-                Support
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item
-              routerLink="/signup"
-              routerLinkActive="active"
-              routerDirection="root"
-              detail="false"
-            >
-              <ion-icon slot="start" name="person-add"></ion-icon>
-              <ion-label>
-                Signup
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list lines="none">
-          <ion-list-header>
-            Tutorial
-          </ion-list-header>
-          <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="openTutorial()" detail="false">
-              <ion-icon slot="start" name="hammer"></ion-icon>
-              <ion-label>Show Tutorial</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

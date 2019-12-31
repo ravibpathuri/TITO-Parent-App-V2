@@ -22,23 +22,24 @@ export class AppComponent implements OnInit {
     {
       title: "Home",
       url: "/app/tabs/schedule",
-      icon: "md-home"
+      icon: "home"
     },
     {
-      title: "Speakers",
+      title: "SMS-Messages",
       url: "/app/tabs/speakers",
-      icon: "contacts"
+      icon: "mail"
     },
-    {
-      title: "Map",
-      url: "/app/tabs/map",
-      icon: "map"
-    },
-    {
-      title: "About",
-      url: "/app/tabs/about",
-      icon: "information-circle"
-    }
+    { title: "Notifications", url: "/app/tabs/speakers", icon: "megaphone" },
+    { title: "Diary", url: "/app/tabs/speakers", icon: "paper" },
+    { title: "Syllabus", url: "/app/tabs/speakers", icon: "book" },
+    { title: "Fee", url: "/app/tabs/speakers", icon: "cash" },
+    { title: "Attendance", url: "/app/tabs/speakers", icon: "pie" },
+    { title: "Holidays", url: "/app/tabs/speakers", icon: "calendar" },
+    { title: "Assessments", url: "/app/tabs/speakers", icon: "clipboard" },
+    { title: "Transport", url: "/app/tabs/speakers", icon: "bus" },
+    { title: "Photos", url: "/app/tabs/speakers", icon: "images" },
+    { title: "Update Password", url: "/app/tabs/speakers", icon: "key" },
+    { title: "Communicate", url: "/app/tabs/speakers", icon: "chatbubbles" }
   ];
   loggedIn = false;
   dark = false;
