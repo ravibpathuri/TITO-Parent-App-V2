@@ -33,11 +33,11 @@ export class AppComponent implements OnInit {
     },
     {
       title: "SMS-Messages",
-      url: "/app/tabs/speakers",
+      url: "/messages",
       icon: "mail"
     },
     { title: "Notifications", url: "/app/tabs/speakers", icon: "megaphone" },
-    { title: "Diary", url: "/app/tabs/speakers", icon: "paper" },
+    { title: "Diary", url: "/daily-diary", icon: "paper" },
     { title: "Syllabus", url: "/app/tabs/speakers", icon: "book" },
     { title: "Fee", url: "/app/tabs/speakers", icon: "cash" },
     { title: "Attendance", url: "/app/tabs/speakers", icon: "pie" },

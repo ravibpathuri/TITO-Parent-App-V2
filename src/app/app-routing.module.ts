@@ -49,6 +49,18 @@ const routes: Routes = [
       import("./pages/add-student/add-student.module").then(
         m => m.AddStudentPageModule
       )
+  },
+  {
+    path: "messages",
+    loadChildren: () =>
+      import("./pages/messages/messages.module").then(m => m.MessagesPageModule)
+  },
+  {
+    path: "daily-diary",
+    loadChildren: () =>
+      import("./pages/daily-diary/daily-diary.module").then(
+        m => m.DailyDiaryPageModule
+      )
   }
 ];
 

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>SMS-Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar (ionInput)="onSearchInput()"></ion-searchbar>
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner slot="center"></ion-spinner>
+  </div>
+  <ion-list>
+    <ion-card *ngFor="let message of filterdMessages">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="mail"></ion-icon>
+          {{ message.date | date: "d MMM yyyy" }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ message.description }}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

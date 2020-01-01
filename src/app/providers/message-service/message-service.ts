@@ -16,13 +16,13 @@ export class StudentSvcProvider {
   }
 
   getMessages() {
-    let seq = this.api.get("messages").subscribe();
+    let seq = this.api.get("messages");
     return seq;
   }
 
   getLatestMessages(time) {
     let input = { sTime: time };
-    let seq = this.api.get("messages/after", input).subscribe();
+    let seq = this.api.get("messages/after", input);
     return seq;
   }
 

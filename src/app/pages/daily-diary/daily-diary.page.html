@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Daily Diary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar (ionInput)="onSearchInput()"></ion-searchbar>
+  <ion-list>
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-icon slot="start" name="paper"></ion-icon>
+          <ion-label>Activity Type</ion-label>
+          <ion-button slot="end" size="small">12 MMM yyyy</ion-button>
+        </ion-item>
+        <p>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit
+          clean.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
