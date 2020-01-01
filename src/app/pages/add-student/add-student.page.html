@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Student</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="accountFG">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>User Name</ion-label>
+        <ion-input
+          type="text"
+          formControlName="ParentLoginId"
+          value=""
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Password</ion-label>
+        <ion-input
+          type="password"
+          formControlName="Password"
+          value=""
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div lass="ion-padding">
+      <ion-button
+        expand="block"
+        (click)="doLogin()"
+        [disabled]="!accountFG.valid"
+        color="primary"
+        >Add</ion-button
+      >
+    </div>
+  </form>
+</ion-content>

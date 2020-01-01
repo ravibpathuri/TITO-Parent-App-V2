@@ -18,6 +18,7 @@ import {
   Api,
   TokenIntercepter
 } from "./providers/providers";
+import { Toast } from "@ionic-native/toast/ngx";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import {
     SplashScreen,
     StatusBar,
     FCM,
+    Toast,
     StudentSvcProvider,
     Api,
     Platform,

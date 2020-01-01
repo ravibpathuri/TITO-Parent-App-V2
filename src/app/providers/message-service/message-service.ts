@@ -110,7 +110,7 @@ export class StudentSvcProvider {
   }
 
   addUser(user) {
-    let req = this.api.post("login", user).subscribe();
+    let req = this.api.post("login", user);
     return req;
   }
   refreshToken(UUID) {

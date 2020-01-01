@@ -1,37 +1,51 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CheckTutorial } from './providers/check-tutorial.service';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/tutorial',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "/users-list",
+    pathMatch: "full"
   },
   {
-    path: 'account',
-    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
+    path: "login",
+    loadChildren: () =>
+      import("./pages/login/login.module").then(m => m.LoginModule)
   },
   {
-    path: 'support',
-    loadChildren: () => import('./pages/support/support.module').then(m => m.SupportModule)
+    path: "app",
+    loadChildren: () =>
+      import("./pages/tabs-page/tabs-page.module").then(m => m.TabsModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    path: "profile",
+    loadChildren: () =>
+      import("./pages/profile/profile.module").then(m => m.ProfilePageModule)
   },
   {
-    path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignUpModule)
+    path: "fee-details",
+    loadChildren: () =>
+      import("./pages/fee-details/fee-details.module").then(
+        m => m.FeeDetailsPageModule
+      )
   },
   {
-    path: 'app',
-    loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsModule)
+    path: "assessments",
+    loadChildren: () =>
+      import("./pages/assessments/assessments.module").then(
+        m => m.AssessmentsPageModule
+      )
   },
   {
-    path: 'tutorial',
-    loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
-    canLoad: [CheckTutorial]
+    path: "users-list",
+    loadChildren: () =>
+      import("./pages/users-list/users-list.module").then(
+        m => m.UsersListPageModule
+      )
+  },
+  {
+    path: 'add-student',
+    loadChildren: () => import('./pages/add-student/add-student.module').then( m => m.AddStudentPageModule)
   }
 ];
 

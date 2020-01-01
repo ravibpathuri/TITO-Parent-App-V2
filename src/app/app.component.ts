@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   appPages = [
     {
       title: "Home",
-      url: "/app/tabs/schedule",
+      url: "/app/tabs/profile",
       icon: "home"
     },
     {
@@ -114,7 +114,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl("/app/tabs/schedule");
+      return this.router.navigateByUrl("/users-list");
     });
   }
 

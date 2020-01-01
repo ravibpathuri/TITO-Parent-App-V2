@@ -49,7 +49,7 @@ export class LoginPage {
       if (this.platform.is("android")) {
         this.loadFCM();
       }
-      this.router.navigateByUrl("/app/tabs/schedule");
+      this.router.navigateByUrl("/app/tabs/profile");
     }
   }
 

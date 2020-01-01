@@ -9,3 +9,10 @@ export interface UserForm {
   Password: string;
   MACAddress: string;
 }
+
+export interface AddStudentForm {
+  ParentLoginId: string;
+  Password: string;
+  MACAddress: string;
+  GroupCode: string;
+}
