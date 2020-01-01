@@ -2,7 +2,12 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { SwUpdate } from "@angular/service-worker";
 
-import { MenuController, Platform, ToastController } from "@ionic/angular";
+import {
+  MenuController,
+  Platform,
+  ToastController,
+  AlertController
+} from "@ionic/angular";
 
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
@@ -10,7 +15,8 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { Storage } from "@ionic/storage";
 
 import { UserData } from "./providers/user-data";
-import { StudentSvcProvider } from "./providers/providers";
+import { StudentSvcProvider, User } from "./providers/providers";
+import { FCM } from "@ionic-native/fcm/ngx";
 
 @Component({
   selector: "app-root",
@@ -42,7 +48,7 @@ export class AppComponent implements OnInit {
     { title: "Update Password", url: "/app/tabs/speakers", icon: "key" },
     { title: "Communicate", url: "/app/tabs/speakers", icon: "chatbubbles" }
   ];
-  loggedIn = false;
+  loggedIn = true;
   dark = false;
 
   profile: any = { student: {} };
@@ -58,14 +64,17 @@ export class AppComponent implements OnInit {
     private userData: UserData,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
-    public profileSvc: StudentSvcProvider
+    public profileSvc: StudentSvcProvider,
+    public user: User,
+    private fcm: FCM,
+    public alertController: AlertController
   ) {
     this.initializeApp();
   }
 
   async ngOnInit() {
     this.checkLoginStatus();
-    this.listenForLoginEvents();
+    //this.listenForLoginEvents();
 
     this.swUpdate.available.subscribe(async res => {
       const toast = await this.toastCtrl.create({
@@ -92,14 +101,6 @@ export class AppComponent implements OnInit {
   }
 
   checkLoginStatus() {
-    // return this.userData.isLoggedIn().then(loggedIn => {
-    //   return this.updateLoggedInStatus(loggedIn);
-    // });
-
-    this.profileSvc.getProfile().subscribe((result: any) => {
-      this.profile = result;
-    });
-
     this.storage.get("currentUser").then(data => {
       if (data) {
         this.studentInfo = JSON.parse(data);
@@ -114,29 +115,48 @@ export class AppComponent implements OnInit {
     }, 300);
   }
 
-  listenForLoginEvents() {
-    window.addEventListener("user:login", () => {
-      this.updateLoggedInStatus(true);
-    });
-
-    window.addEventListener("user:signup", () => {
-      this.updateLoggedInStatus(true);
-    });
-
-    window.addEventListener("user:logout", () => {
-      this.updateLoggedInStatus(false);
-    });
-  }
-
   logout() {
-    this.userData.logout().then(() => {
+    // un-subscribe from topics
+    if (this.platform.is("android")) {
+      this.storage.get("MY_NOTIFICATION_TOPICS").then(myTopics => {
+        // Un-Subscribe to each topic
+        myTopics.forEach(topicName => {
+          this.fcm.unsubscribeFromTopic(topicName);
+        });
+      });
+    }
+
+    // do logout
+    this.user.logout();
+
+    // route to users-list
+    setTimeout(() => {
       return this.router.navigateByUrl("/users-list");
-    });
+    }, 3000);
   }
 
-  openTutorial() {
-    this.menu.enable(false);
-    this.storage.set("ion_did_tutorial", false);
-    this.router.navigateByUrl("/tutorial");
+  async presentLogoutConfirm() {
+    const alert = await this.alertController.create({
+      header: "Confirm!",
+      message: "Are you sure you want to <strong>Logout</strong>!!!",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary",
+          handler: blah => {
+            console.log("Confirm Cancel: blah");
+          }
+        },
+        {
+          text: "Okay",
+          handler: () => {
+            this.logout();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

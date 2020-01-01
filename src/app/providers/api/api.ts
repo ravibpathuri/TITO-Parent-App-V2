@@ -40,7 +40,7 @@ export class Api {
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
-    let req = this.http.post(this.url + "/" + endpoint, body, reqOpts);
+    let req = this.http.post(`${this.url}/${endpoint}`, body, reqOpts);
     req.pipe(retry(3), catchError(this.handleError));
     return req;
   }

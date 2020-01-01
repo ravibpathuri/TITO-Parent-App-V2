@@ -32,16 +32,6 @@ export class ProfilePage implements OnInit {
   ) {
     this.presentLoading();
     this.refreshToken();
-
-    let req = profileSvc.getProfile();
-    req.subscribe(
-      (result: any) => {
-        this.profile = result;
-      },
-      (err: any) => {
-        console.log(err);
-      }
-    );
   }
 
   ngOnInit() {}
@@ -60,13 +50,19 @@ export class ProfilePage implements OnInit {
                 this.fcm.unsubscribeFromTopic(topicName);
               });
             });
-
-            // re-subscribe to new topics
-            this.loadFCM();
           }
         }
+
+        // get profile data with latest token
+        this.getProfileData();
+
+        // re-subscribe to new topics
+        //this.loadFCM();
       },
       err => {
+        // get profile data with old token
+        this.getProfileData();
+
         this.toast
           .show(`Something Wrong. Please try after some time`, "3000", "bottom")
           .subscribe(toast => {
@@ -74,6 +70,12 @@ export class ProfilePage implements OnInit {
           });
       }
     );
+  }
+
+  getProfileData() {
+    this.profileSvc.getProfile().subscribe(result => {
+      this.profile = result;
+    });
   }
 
   loadFCM() {

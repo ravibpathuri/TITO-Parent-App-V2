@@ -25,8 +25,9 @@ export class UsersListPage implements OnInit {
     this.storage.get(this.ALL_USERS_STORAGE_NAME).then(data => {
       if (data) {
         this.allUsers = JSON.parse(data);
+        console.log(this.allUsers);
         if (this.allUsers.length <= 0) {
-          this.router.navigateByUrl("/app/tabs/profile");
+          this.router.navigateByUrl("/login");
         }
       } else {
         this.router.navigateByUrl("/login");

@@ -7,16 +7,16 @@
         </ion-toolbar>
         <ion-list>
           <ion-item color="primary">
-            <h2 class="ion-text-wrap">
-              {{ studentInfo.Student.name | uppercase }}
-            </h2>
-          </ion-item>
-          <ion-item color="primary">
             <ion-avatar slot="start">
               <img src="../assets/imgs/profile.png" />
             </ion-avatar>
             <ion-label>
-              <h3>{{ studentInfo.Student.admissionId }}</h3>
+              <h3 class="ion-text-wrap">
+                {{ studentInfo.Student.name | uppercase }}
+              </h3>
+              <p>
+                {{ studentInfo.Student.admissionId }}
+              </p>
               <p>
                 {{ studentInfo.Student.className }} >>
                 {{ studentInfo.Student.section }}
@@ -67,7 +67,7 @@
 
           <ion-menu-toggle autoHide="false">
             <ion-item
-              routerLink="/account"
+              routerLink="/add-student"
               routerLinkActive="active"
               routerDirection="root"
               detail="false"
@@ -78,7 +78,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="logout()" detail="false">
+            <ion-item button (click)="presentLogoutConfirm()" detail="false">
               <ion-icon slot="start" name="log-out"></ion-icon>
               <ion-label>
                 Logout

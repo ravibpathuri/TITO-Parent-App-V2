@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
-
 import { Api } from "../api/api";
+
 @Injectable()
 export class User {
   _user: any;
@@ -16,19 +16,15 @@ export class User {
    * the user entered on the form.
    */
   login(accountInfo: any) {
-    let seq = this.api.post("login", accountInfo);
-
-    seq.subscribe(
-      (res: any) => {
-        this._loggedIn(res);
-        // console.log(res);
+    console.log(accountInfo);
+    this.api.post("login", accountInfo).subscribe(
+      respose => {
+        this._loggedIn(respose);
       },
       err => {
-        console.error("ERROR", err);
+        console.log(err);
       }
     );
-
-    return seq;
   }
 
   /**
@@ -39,12 +35,10 @@ export class User {
       if (currentUser) {
         this._user = JSON.parse(currentUser);
       }
-      console.log(currentUser);
       this.storage.remove(this.USER_STORAGE_NAME);
       this.storage.get(this.ALL_USERS_STORAGE_NAME).then(allUsers => {
         if (allUsers) {
           let allUsersJSON = JSON.parse(allUsers);
-          console.log(allUsersJSON);
           let allUsersJSONModified = [];
           allUsersJSON.forEach(user => {
             if (user.authToken !== this._user.authToken)
@@ -88,7 +82,6 @@ export class User {
    * Process a login/signup response to store user data
    */
   _loggedIn(resp) {
-    console.log(resp);
     this._user = resp;
     console.log(this._user);
     this.storage.set(this.USER_STORAGE_NAME, JSON.stringify(this._user));
@@ -96,7 +89,6 @@ export class User {
 
     // store to allUsersContainer
     this.storage.get(this.ALL_USERS_STORAGE_NAME).then(allUsers => {
-      console.log(allUsers);
       let allUsersJSON = [];
       if (allUsers) {
         allUsersJSON = JSON.parse(allUsers);
@@ -110,7 +102,6 @@ export class User {
   }
 
   resetLoggedInToken(resp) {
-    console.log(resp);
     // if responce has a valid token then reset existing token
     if (resp) {
       this._user = resp;

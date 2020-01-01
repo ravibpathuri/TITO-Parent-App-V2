@@ -8,7 +8,7 @@ import { Storage } from "@ionic/storage";
 import { UserData } from "../../providers/user-data";
 
 import { UserOptions, UserForm } from "../../interfaces/user-options";
-import { StudentSvcProvider } from "../../providers/providers";
+import { StudentSvcProvider, User } from "../../providers/providers";
 
 @Component({
   selector: "page-login",
@@ -38,14 +38,23 @@ export class LoginPage {
     public toastCtrl: ToastController,
     private platform: Platform,
     public storage: Storage,
-    public userSvc: StudentSvcProvider
+    public userSvc: StudentSvcProvider,
+    private user: User
   ) {}
 
   onLogin(form: NgForm) {
     this.submitted = true;
 
+    console.log(this.login);
+
     if (form.valid) {
-      this.userData.login(this.login.username);
+      this.account.ParentLoginId = this.login.username;
+      this.account.Password = this.login.password;
+
+      console.log(this.account);
+
+      this.user.login(this.account);
+
       if (this.platform.is("android")) {
         this.loadFCM();
       }

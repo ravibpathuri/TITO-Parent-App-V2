@@ -44,8 +44,11 @@ const routes: Routes = [
       )
   },
   {
-    path: 'add-student',
-    loadChildren: () => import('./pages/add-student/add-student.module').then( m => m.AddStudentPageModule)
+    path: "add-student",
+    loadChildren: () =>
+      import("./pages/add-student/add-student.module").then(
+        m => m.AddStudentPageModule
+      )
   }
 ];
 
