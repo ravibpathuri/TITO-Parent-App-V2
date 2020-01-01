@@ -32,9 +32,9 @@ export class TokenIntercepter implements HttpInterceptor {
     }
 
     this.headers = new HttpHeaders({
-      Authorization: "Bearer " + this.token,
-      //   Authorization:
-      //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlAwMzUwMDAwMDIiLCJuYW1laWQiOiJQMDM1MDAwMDAyIiwiR3JvdXBfSUQiOiIzNSIsIkJyYW5jaF9JRCI6IjU4IiwiT3JnYW5pemF0aW9uX0lEIjoiNDMiLCJBZG1pc3Npb25JZCI6IjEzNDU4IiwiRW5yb2xsbWVudElkIjoiMTQyMzAiLCJQYXJlbnRJZCI6IjI3MDcwIiwiQVlJZCI6IjkzIiwiUGFyZW50TG9naW5JZCI6IlAwMzUwMDAwMDIiLCJNYWNBZGRyZXNzIjoiMTIxNDU0NTY0IiwibmJmIjoxNTIxMjkwNjg5LCJleHAiOjE1NTI4MjY2ODksImlhdCI6MTUyMTI5MDY4OSwiaXNzIjoic2VsZiIsImF1ZCI6Imh0dHA6Ly9teXNjaG9vbC5wcmVkaWZhc3QuY29tL2FwaSJ9.HLGl_j204M80AXUlw2-oUwJ4rHjBB9GPKPHClvaLa70",
+      //Authorization: "Bearer " + this.token,
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJHcm91cF9JRCI6IjIzIiwiQnJhbmNoX0lEIjoiNTciLCJPcmdhbml6YXRpb25fSUQiOiIyNCIsIlVzZXJUeXBlX0lEIjoiMyIsIk1hY0FkZHJlc3MiOiIiLCJBZG1pc3Npb25JZCI6IjE5MzMyIiwiRW5yb2xsbWVudElkIjoiMjUxOTMiLCJQYXJlbnRJZCI6IjM5MjI5IiwiQVlJZCI6IjgzIiwiUGFyZW50TG9naW5JZCI6IkFETTAwMDAwNyIsIlZlcnNpb24iOiIyLjAiLCJUb2tlbkV4cGlyeURhdGUiOiIxLzE0LzIwMjAgODowMjoxNyBBTSIsInVuaXF1ZV9uYW1lIjoiQURNMDAwMDA3IiwibmFtZWlkIjoiQURNMDAwMDA3IiwibmJmIjoxNTc3NjkyOTM3LCJleHAiOjE2MDkzMTUzMzcsImlhdCI6MTU3NzY5MjkzNywiaXNzIjoic2VsZiIsImF1ZCI6Imh0dHA6Ly9teXNjaG9vbC5wcmVkaWZhc3QuY29tL2FwaSJ9.xSopIzlQqV-q1N7fP7kpWKWn_rzWFDNYj91NAYjCmhQ",
       UUID: this.uuid,
       "Content-Type": "application/json"
     });

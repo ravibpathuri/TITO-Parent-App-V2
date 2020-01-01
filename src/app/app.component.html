@@ -8,11 +8,20 @@
         <ion-list>
           <ion-item color="primary">
             <h2 class="ion-text-wrap">
-              {{ "Ravi Babu Pathuri" | uppercase }}
+              {{ studentInfo.Student.name | uppercase }}
             </h2>
           </ion-item>
           <ion-item color="primary">
-            <p>{{ "ADM0007" }} >> {{ "Grage I" }} >> {{ "A" }}</p>
+            <ion-avatar slot="start">
+              <img src="../assets/imgs/profile.png" />
+            </ion-avatar>
+            <ion-label>
+              <h3>{{ studentInfo.Student.admissionId }}</h3>
+              <p>
+                {{ studentInfo.Student.className }} >>
+                {{ studentInfo.Student.section }}
+              </p>
+            </ion-label>
           </ion-item>
         </ion-list>
       </ion-header>

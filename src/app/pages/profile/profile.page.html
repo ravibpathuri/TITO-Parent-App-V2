@@ -7,4 +7,119 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="primary-light">
+      <b> {{"Student Details" | uppercase}}</b>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label>
+        <h5>Name</h5>
+        {{profile.student?.studentName | uppercase}}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h5>Class</h5>
+        <p>{{profile.student?.courseName }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h5>Section</h5>
+        <p>{{profile.student?.section | uppercase}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h5>AADHAR</h5>
+        <p>{{profile.student?.aadharNumber | uppercase}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h5>Admission Number</h5>
+        <p>{{profile.student?.admissionNumber | uppercase}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h5>Academic Year</h5>
+        <p>{{profile.student?.acdamicYear | uppercase}}</p></ion-label
+      >
+    </ion-item>
+    <ion-item-divider color="primary-light">
+      <b> {{"Father Details" | uppercase}}</b>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        <h5>Name</h5>
+        <p class="ion-text-wrap">
+          {{profile.father?.fatherName | uppercase}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button slot="end" color="primary">
+        Edit
+      </ion-button>
+      <ion-label>
+        <h5>Contact</h5>
+        <p class="ion-text-wrap">
+          {{profile.father?.fatherContactNumber | uppercase}}
+        </p>
+        <p class="ion-text-wrap">
+          {{profile.father?.email | lowercase}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button slot="end" color="primary">
+        Edit
+      </ion-button>
+      <ion-label>
+        <h5>Address</h5>
+        <p class="ion-text-wrap">
+          {{profile.father?.address}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item-divider color="primary-light">
+      <b>{{"Mother Details" | uppercase}}</b>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        <h5>Name</h5>
+        <p class="ion-text-wrap">
+          {{profile.mother?.motherName | uppercase}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button slot="end" color="primary">
+        Edit
+      </ion-button>
+      <ion-label>
+        <h5>Contact</h5>
+        <p class="ion-text-wrap">
+          {{profile.mother?.motherContactNumber | uppercase}}
+        </p>
+        <p class="ion-text-wrap">
+          {{profile.mother?.email | lowercase}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button slot="end" color="primary">
+        Edit
+      </ion-button>
+      <ion-label>
+        <h5>Address</h5>
+        <p class="ion-text-wrap">
+          {{profile.mother?.address}}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

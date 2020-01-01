@@ -16,7 +16,8 @@ import { FCM } from "@ionic-native/fcm/ngx";
 import {
   StudentSvcProvider,
   Api,
-  TokenIntercepter
+  TokenIntercepter,
+  User
 } from "./providers/providers";
 import { Toast } from "@ionic-native/toast/ngx";
 
@@ -40,6 +41,7 @@ import { Toast } from "@ionic-native/toast/ngx";
     FCM,
     Toast,
     StudentSvcProvider,
+    User,
     Api,
     Platform,
     Storage,

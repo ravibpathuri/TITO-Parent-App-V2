@@ -10,6 +10,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { Storage } from "@ionic/storage";
 
 import { UserData } from "./providers/user-data";
+import { StudentSvcProvider } from "./providers/providers";
 
 @Component({
   selector: "app-root",
@@ -44,6 +45,9 @@ export class AppComponent implements OnInit {
   loggedIn = false;
   dark = false;
 
+  profile: any = { student: {} };
+  studentInfo: any = { Student: {} };
+
   constructor(
     private menu: MenuController,
     private platform: Platform,
@@ -53,7 +57,8 @@ export class AppComponent implements OnInit {
     private storage: Storage,
     private userData: UserData,
     private swUpdate: SwUpdate,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public profileSvc: StudentSvcProvider
   ) {
     this.initializeApp();
   }
@@ -87,8 +92,19 @@ export class AppComponent implements OnInit {
   }
 
   checkLoginStatus() {
-    return this.userData.isLoggedIn().then(loggedIn => {
-      return this.updateLoggedInStatus(loggedIn);
+    // return this.userData.isLoggedIn().then(loggedIn => {
+    //   return this.updateLoggedInStatus(loggedIn);
+    // });
+
+    this.profileSvc.getProfile().subscribe((result: any) => {
+      this.profile = result;
+    });
+
+    this.storage.get("currentUser").then(data => {
+      if (data) {
+        this.studentInfo = JSON.parse(data);
+        console.log(this.studentInfo);
+      }
     });
   }
 

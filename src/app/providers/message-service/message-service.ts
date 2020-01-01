@@ -10,7 +10,7 @@ export class StudentSvcProvider {
   constructor(public api: Api) {}
 
   getProfile() {
-    let seq = this.api.get("profile").subscribe();
+    let seq = this.api.get("profile");
 
     return seq;
   }
