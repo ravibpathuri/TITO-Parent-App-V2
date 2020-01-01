@@ -17,14 +17,8 @@ export class User {
    */
   login(accountInfo: any) {
     console.log(accountInfo);
-    this.api.post("login", accountInfo).subscribe(
-      respose => {
-        this._loggedIn(respose);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    let req = this.api.post("login", accountInfo);
+    return req;
   }
 
   /**

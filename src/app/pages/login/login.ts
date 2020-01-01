@@ -50,15 +50,18 @@ export class LoginPage {
     if (form.valid) {
       this.account.ParentLoginId = this.login.username;
       this.account.Password = this.login.password;
-
-      console.log(this.account);
-
-      this.user.login(this.account);
-
-      if (this.platform.is("android")) {
-        this.loadFCM();
-      }
-      this.router.navigateByUrl("/app/tabs/profile");
+      this.user.login(this.account).subscribe(
+        respose => {
+          this.user._loggedIn(respose);
+          if (this.platform.is("android")) {
+            this.loadFCM();
+          }
+          this.router.navigateByUrl("/users-list");
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
   }
 
