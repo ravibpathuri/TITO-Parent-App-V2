@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Attendanace</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-divider color="primary-light">
+    {{'Attendanace'| uppercase}}
+  </ion-item-divider>
+  <ion-card>
+    <ion-card-content>
+      <canvas height="300px" #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item-divider color="primary-light">
+      {{'Details'| uppercase}}
+    </ion-item-divider>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center"><b>Month</b></ion-col>
+      <ion-col class="ion-text-center"><b>Present</b></ion-col>
+      <ion-col class="ion-text-center"><b>Percentage</b></ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let items of attendanceDetails">
+      <ion-col class="ion-text-center">{{items.month}}</ion-col>
+      <ion-col class="ion-text-center"
+        >{{items.attended}} / {{items.schoolDays}}</ion-col
+      >
+      <ion-col class="ion-text-center"
+        >{{((items.attended/items.schoolDays)*100).toFixed(2)}}</ion-col
+      >
+    </ion-row>
+  </ion-grid>
+</ion-content>

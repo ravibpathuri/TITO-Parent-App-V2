@@ -36,17 +36,17 @@ export class AppComponent implements OnInit {
       url: "/messages",
       icon: "mail"
     },
-    { title: "Notifications", url: "/app/tabs/speakers", icon: "megaphone" },
+    { title: "Notifications", url: "/notifications", icon: "megaphone" },
     { title: "Diary", url: "/daily-diary", icon: "paper" },
-    { title: "Syllabus", url: "/app/tabs/speakers", icon: "book" },
-    { title: "Fee", url: "/app/tabs/speakers", icon: "cash" },
-    { title: "Attendance", url: "/app/tabs/speakers", icon: "pie" },
-    { title: "Holidays", url: "/app/tabs/speakers", icon: "calendar" },
-    { title: "Assessments", url: "/app/tabs/speakers", icon: "clipboard" },
-    { title: "Transport", url: "/app/tabs/speakers", icon: "bus" },
-    { title: "Photos", url: "/app/tabs/speakers", icon: "images" },
-    { title: "Update Password", url: "/app/tabs/speakers", icon: "key" },
-    { title: "Communicate", url: "/app/tabs/speakers", icon: "chatbubbles" }
+    { title: "Syllabus", url: "/syllabus", icon: "book" },
+    { title: "Fee", url: "/fees/tabs/fee-details", icon: "cash" },
+    { title: "Attendance", url: "/attendance", icon: "pie" },
+    { title: "Holidays", url: "/holidays", icon: "calendar" },
+    { title: "Assessments", url: "/assessments", icon: "clipboard" },
+    { title: "Transport", url: "/transport-details", icon: "bus" },
+    { title: "Photos", url: "/photos", icon: "images" },
+    { title: "Update Password", url: "/reset-password", icon: "key" },
+    { title: "Communicate", url: "/communication", icon: "chatbubbles" }
   ];
   loggedIn = true;
   dark = false;

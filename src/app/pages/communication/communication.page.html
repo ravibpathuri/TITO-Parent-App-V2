@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Communication</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #resetPaswordForm="ngForm" novalidate>
+    <ion-item>
+      <ion-label>Communicate With</ion-label>
+      <ion-select [(ngModel)]="account.To_Whom" name="To_Whom" required>
+        <ion-select-option value="A">Admin</ion-select-option>
+        <ion-select-option value="T">Teacher</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="account.To_Whom=='A' ">
+      <ion-label>Type</ion-label>
+      <ion-select [(ngModel)]="account.Type" name="Type" required>
+        <ion-select-option value="Fee">Fee</ion-select-option>
+        <ion-select-option value="other">other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="account.To_Whom=='T' ">
+      <ion-label>Type</ion-label>
+      <ion-select [(ngModel)]="account.Type" name="Type" required>
+        <ion-select-option value="Exams">Exams</ion-select-option>
+        <ion-select-option value="Diary">Diary</ion-select-option>
+        <ion-select-option value="Attendance">Attendance</ion-select-option>
+        <ion-select-option value="other">other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-textarea
+        placeholder="Enter Message"
+        [(ngModel)]="account.Text"
+        name="Text"
+        required
+      ></ion-textarea>
+    </ion-item>
+    <div padding>
+      <ion-button
+        expand="block"
+        type="submit"
+        (click)="Create(resetPaswordForm)"
+      >
+        Send
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

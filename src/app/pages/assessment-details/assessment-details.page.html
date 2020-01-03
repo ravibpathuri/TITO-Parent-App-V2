@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assessment Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-group>
+      <!-- <ion-item-divider color="light">A</ion-item-divider> -->
+    </ion-item-group>
+
+    <ion-item *ngFor="let result of assessmentDetails">
+      <ion-label>
+        {{ result.subject }}
+        <p>Marks: {{result.scoredMarks}} out of {{result.totalMarks}}</p>
+        <small *ngIf="result.date">
+          Scheduled on {{ result.date | date:'mediumDate'}}
+        </small>
+      </ion-label>
+      <!-- <h4 ion-text></h4> -->
+      <ion-badge slot="end" [color]="result.resultFlag">
+        Grade : {{ result.grade }}
+      </ion-badge>
+      <!--  -->
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -7,4 +7,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        <b>Fee components</b>
+      </ion-item-divider>
+    </ion-item-group>
+    <ion-item-group *ngFor="let fee of feeDetails">
+      <ion-item-divider  class="ion-padding" >
+       <b> Term {{ fee.feeTerm }}</b>
+        <ion-label color="danger" slot="end">
+          
+          Due on: {{ fee.dueDate | date: "d MMM yyyy" }}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-label>Fee</ion-label>
+        <p item-end>{{ fee.totalFee | currency: "INR" }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Due</ion-label>
+        <p item-end>{{ fee.totalDue | currency: "INR" }}</p>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider></ion-item-divider>
+      <ion-button type="button" disabled="true" expand="block">
+        Proceed to pay (Coming Soon)
+      </ion-button>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

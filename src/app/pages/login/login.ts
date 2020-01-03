@@ -20,7 +20,7 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: UserForm = {
-    GroupCode: "TITO",
+    GroupCode: "",
     ParentLoginId: "",
     Password: "",
     MACAddress: ""
@@ -28,7 +28,7 @@ export class LoginPage {
   uuid = "";
   NOTIFICATIONTOPICS = "MY_NOTIFICATION_TOPICS";
 
-  login: UserOptions = { username: "", password: "" };
+  login: UserOptions = { username: "", password: "", GroupCode: "" };
   submitted = false;
 
   constructor(
@@ -50,6 +50,7 @@ export class LoginPage {
     if (form.valid) {
       this.account.ParentLoginId = this.login.username;
       this.account.Password = this.login.password;
+      this.account.GroupCode = this.login.GroupCode;
       this.user.login(this.account).subscribe(
         respose => {
           this.user._loggedIn(respose);

@@ -46,6 +46,8 @@ export class MessagesPage implements OnInit {
 
   loadMessages(refresher?: any) {
     this.storage.get(this.STORED_MESSAGES_TIMESTAMP).then((datetime: any) => {
+      this.setFilteredItems();
+
       // if time stamp is available
       if (datetime) {
         //then, look for new messages in backend

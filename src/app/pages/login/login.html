@@ -8,6 +8,19 @@
   <form #loginForm="ngForm" novalidate>
     <ion-list>
       <ion-item>
+        <ion-label position="stacked" color="primary">GroupCode</ion-label>
+        <ion-input
+          [(ngModel)]="login.GroupCode"
+          name="GroupCode"
+          type="text"
+          #GroupCode="ngModel"
+          spellcheck="false"
+          autocapitalize="off"
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label position="stacked" color="primary">Username</ion-label>
         <ion-input
           [(ngModel)]="login.username"

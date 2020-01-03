@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Query Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of querys">
+    <ion-card-header>
+      <ion-item>
+        <b>Query: {{item.Text}}</b>
+        <ion-button color="primary" slot="end"
+          >{{item.Posted_Date |date:'d MMM yyyy'}}</ion-button
+        >
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item-divider color="primary-light">
+          <ion-item>
+            <h2>
+              <b>Responce</b>
+            </h2>
+            {{item.Response}}
+          </ion-item>
+        </ion-item-divider>
+        <ion-item-divider color="primary-light">
+          <ion-item>
+            <h2>
+              <b>Responded Date</b>
+            </h2>
+            {{item.Responded_Date |date:'d MMM yyyy'}}
+          </ion-item>
+        </ion-item-divider>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

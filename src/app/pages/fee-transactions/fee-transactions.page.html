@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Fee Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="feeTransactions.length>0">
+    <ion-item-group>
+      <ion-item-divider color="light">
+        Fee payment transactions
+      </ion-item-divider>
+
+      <ion-item *ngFor="let transacton of feeTransactions">
+        <h2>{{transacton.invoiceCode}}</h2>
+        <p>
+          {{transacton.feeComponentName}} - {{transacton.paidAmount |
+          currency:'INR'}}
+        </p>
+        <p>Paid on: {{transacton.paidDate}}</p>
+        <ion-button
+          color="primary"
+          slot="end"
+          (click)="downloandInvoice(transacton)"
+        >
+          <ion-icon name="download"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <ion-item *ngIf="feeTransactions.length<=0">
+    <ion-label>No transactions found</ion-label>
+  </ion-item>
+</ion-content>

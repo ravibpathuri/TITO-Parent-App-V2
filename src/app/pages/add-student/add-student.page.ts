@@ -57,14 +57,15 @@ export class AddStudentPage implements OnInit {
     this.accountFG = this.fb.group({
       ParentLoginId: ["", [Validators.required]],
       Password: ["", Validators.required],
-      MACAddress: [this.uuid]
+      MACAddress: [this.uuid],
+      GroupCode: ["", [Validators.required]]
     });
   }
 
   doLogin() {
     this.account = this.accountFG.value;
     // To do Groupcode='CRAYONS'
-    this.account.GroupCode = "TITO";
+    //this.account.GroupCode = "TITO";
     if (!this.accountFG.valid) {
       console.log(`Form Not Valid`);
       this.toast.show(`Invalid Details`, "3000", "top").subscribe(toast => {

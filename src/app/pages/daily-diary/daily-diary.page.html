@@ -8,29 +8,33 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing..."
-    ></ion-refresher-content>
-  </ion-refresher>
-  <ion-searchbar (ionInput)="onSearchInput()"></ion-searchbar>
-  <ion-list>
-    <ion-card>
-      <ion-card-content>
-        <ion-item>
-          <ion-icon slot="start" name="paper"></ion-icon>
-          <ion-label>Activity Type</ion-label>
-          <ion-button slot="end" size="small">12 MMM yyyy</ion-button>
-        </ion-item>
-        <p>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit
-          clean.
-        </p>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+  <ion-card *ngFor="let activity of activities">
+    <ion-card-header>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <b>{{activity.ActivityType}}</b>
+        </ion-label>
+        <ion-button color="primary" slot="end">
+          {{activity.ActivityDate |date:'d MMM yyyy'}}
+        </ion-button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content class="ion-text-wrap">
+      <div [innerHTML]="activity.description | safeHtml"></div>
+      <div *ngIf="activity.documentid; then thenBlock"></div>
+      <ng-template #thenBlock>
+        <ion-footer>
+          <ion-toolbar>
+            <ion-button
+              size="small"
+              slot="end"
+              href="https://applebee-tito-qa.azurewebsites.net/FileDownload/downloadFile?guid={{activity.documentGUID}}&refId={{activity.ActivityId}}"
+            >
+              Download <ion-icon name="download"></ion-icon>
+            </ion-button>
+          </ion-toolbar>
+        </ion-footer>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

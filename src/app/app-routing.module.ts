@@ -30,13 +30,6 @@ const routes: Routes = [
       )
   },
   {
-    path: "assessments",
-    loadChildren: () =>
-      import("./pages/assessments/assessments.module").then(
-        m => m.AssessmentsPageModule
-      )
-  },
-  {
     path: "users-list",
     loadChildren: () =>
       import("./pages/users-list/users-list.module").then(
@@ -61,7 +54,98 @@ const routes: Routes = [
       import("./pages/daily-diary/daily-diary.module").then(
         m => m.DailyDiaryPageModule
       )
+  },
+  {
+    path: "notifications",
+    loadChildren: () =>
+      import("./pages/notifications/notifications.module").then(
+        m => m.NotificationsPageModule
+      )
+  },
+  {
+    path: "syllabus",
+    loadChildren: () =>
+      import("./pages/syllabus/syllabus.module").then(m => m.SyllabusPageModule)
+  },
+  {
+    path: "fee-details",
+    loadChildren: () =>
+      import("./pages/fee-details/fee-details.module").then(
+        m => m.FeeDetailsPageModule
+      )
+  },
+  {
+    path: "fee-transactions",
+    loadChildren: () =>
+      import("./pages/fee-transactions/fee-transactions.module").then(
+        m => m.FeeTransactionsPageModule
+      )
+  },
+  {
+    path: "attendance",
+    loadChildren: () =>
+      import("./pages/attendance/attendance.module").then(
+        m => m.AttendancePageModule
+      )
+  },
+  {
+    path: "holidays",
+    loadChildren: () =>
+      import("./pages/holidays/holidays.module").then(m => m.HolidaysPageModule)
+  },
+  {
+    path: "assessments",
+    loadChildren: () =>
+      import("./pages/assessments/assessments.module").then(
+        m => m.AssessmentsPageModule
+      )
+  },
+  {
+    path: "assessment-details/:assessmentId",
+    loadChildren: () =>
+      import("./pages/assessment-details/assessment-details.module").then(
+        m => m.AssessmentDetailsPageModule
+      )
+  },
+  {
+    path: "transport-details",
+    loadChildren: () =>
+      import("./pages/transport-details/transport-details.module").then(
+        m => m.TransportDetailsPageModule
+      )
+  },
+  {
+    path: "transport-tracking",
+    loadChildren: () =>
+      import("./pages/transport-tracking/transport-tracking.module").then(
+        m => m.TransportTrackingPageModule
+      )
+  },
+  {
+    path: "photos",
+    loadChildren: () =>
+      import("./pages/photos/photos.module").then(m => m.PhotosPageModule)
+  },
+  {
+    path: "reset-password",
+    loadChildren: () =>
+      import("./pages/reset-password/reset-password.module").then(
+        m => m.ResetPasswordPageModule
+      )
+  },
+  {
+    path: "fees",
+    loadChildren: () =>
+      import("./pages/fees/fees.module").then(m => m.FeesPageModule)
+  },  {
+    path: 'communication',
+    loadChildren: () => import('./pages/communication/communication.module').then( m => m.CommunicationPageModule)
+  },
+  {
+    path: 'communication-details',
+    loadChildren: () => import('./pages/communication-details/communication-details.module').then( m => m.CommunicationDetailsPageModule)
   }
+
 ];
 
 @NgModule({

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Photos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let item of data">
+      <img [src]="sanitizer.bypassSecurityTrustUrl(item.image)"/>
+      <ion-card-content>
+        <ion-card-title>
+         {{item.description}}
+          </ion-card-title>
+      </ion-card-content>
+      <!-- <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="secondary" icon-start (click)="downloadFile(item.image)">
+              <ion-icon name='download'></ion-icon>
+              Download
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="primary" icon-start (click)="shareImage(item)">
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row> -->
+    
+    </ion-card>
+  </ion-content>
+  

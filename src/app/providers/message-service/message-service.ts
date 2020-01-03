@@ -28,64 +28,64 @@ export class StudentSvcProvider {
 
   getLatestMessagesCount(time) {
     let input = { sTime: time };
-    let seq = this.api.get("messages/count/after", input).subscribe();
+    let seq = this.api.get("messages/count/after", input);
     return seq;
   }
 
   getAssessments() {
-    let seq = this.api.get("assessments").subscribe();
+    let seq = this.api.get("assessments");
     return seq;
   }
 
   getAssessmentDetail(assementId) {
-    let seq = this.api.get("assessments/" + assementId).subscribe();
+    let seq = this.api.get("assessments/" + assementId);
     return seq;
   }
 
   getAttendance() {
-    let seq = this.api.get("attendance").subscribe();
+    let seq = this.api.get("attendance");
     return seq;
   }
 
   getFeeDetails() {
-    let seq = this.api.get("fee/details").subscribe();
+    let seq = this.api.get("fee/details");
     return seq;
   }
 
   getFeeTransactions() {
-    let seq = this.api.get("fee/transactions").subscribe();
+    let seq = this.api.get("fee/transactions");
     return seq;
   }
 
   getVehicleDetails() {
-    let seq = this.api.get("transport/details").subscribe();
+    let seq = this.api.get("transport/details");
     return seq;
   }
 
   getVehicleTracking() {
-    let seq = this.api.get("transport/tracking").subscribe();
+    let seq = this.api.get("transport/tracking");
     return seq;
   }
   getNotifications() {
-    let seq = this.api.get("Activities").subscribe();
+    let seq = this.api.get("Activities");
     return seq;
   }
 
   getHomeTasks() {
-    let seq = this.api.get("AllTasks").subscribe();
+    let seq = this.api.get("AllTasks");
     return seq;
   }
 
   getSyllabus() {
-    let seq = this.api.get("Syllabus").subscribe();
+    let seq = this.api.get("Syllabus");
     return seq;
   }
   getHolidays() {
-    let seq = this.api.get("Holidays").subscribe();
+    let seq = this.api.get("Holidays");
     return seq;
   }
   getDocument(RefId, documentId) {
-    let seq = this.api.get("document/" + RefId + "/" + documentId).subscribe();
+    let seq = this.api.get("document/" + RefId + "/" + documentId);
     return seq;
   }
 
@@ -100,7 +100,7 @@ export class StudentSvcProvider {
     return req;
   }
   getImages() {
-    let seq = this.api.get("eventImages").subscribe();
+    let seq = this.api.get("eventImages");
     return seq;
   }
 
@@ -114,20 +114,20 @@ export class StudentSvcProvider {
     return req;
   }
   refreshToken(UUID) {
-    let seq = this.api.get("document/" + UUID).subscribe();
+    let seq = this.api.get("document/" + UUID);
     return seq;
   }
 
   CreateQuery(data) {
-    let req = this.api.post("CreateParentQuery", data).subscribe();
+    let req = this.api.post("CreateParentQuery", data);
     return req;
   }
   getRespondedQuerys() {
-    let seq = this.api.get("GetRespondedQuerys").subscribe();
+    let seq = this.api.get("GetRespondedQuerys");
     return seq;
   }
   CreateFeedback(data) {
-    let req = this.api.post("CreateFeedback", data).subscribe();
+    let req = this.api.post("CreateFeedback", data);
     return req;
   }
 }
