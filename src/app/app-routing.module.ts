@@ -146,6 +146,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/communication-details/communication-details.module').then( m => m.CommunicationDetailsPageModule)
   },
   {
+    path: 'profile-edit',
+    loadChildren: () => import('./pages/profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
+  },
+  {
     path: 'time-table',
     loadChildren: () => import('./pages/time-table/time-table.module').then( m => m.TimeTablePageModule)
   }

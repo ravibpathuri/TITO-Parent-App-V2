@@ -13,17 +13,19 @@
       <ion-item-divider color="light">
         Fee payment transactions
       </ion-item-divider>
-
       <ion-item *ngFor="let transacton of feeTransactions">
-        <h2>{{transacton.invoiceCode}}</h2>
-        <p>
-          {{transacton.feeComponentName}} - {{transacton.paidAmount |
-          currency:'INR'}}
-        </p>
-        <p>Paid on: {{transacton.paidDate}}</p>
+        <ion-label>
+          <h2>{{transacton.invoiceCode}}</h2>
+          <p>
+            {{transacton.feeComponentName}} - {{transacton.paidAmount |
+            currency:'INR'}}
+          </p>
+          <p>Paid on: {{transacton.paidDate}}</p>
+        </ion-label>
         <ion-button
           color="primary"
           slot="end"
+          disabled="true"
           (click)="downloandInvoice(transacton)"
         >
           <ion-icon name="download"></ion-icon>

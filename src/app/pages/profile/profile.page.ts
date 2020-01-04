@@ -18,6 +18,7 @@ export class ProfilePage implements OnInit {
   // Our translated text strings
   private loginErrorString: string;
   NOTIFICATIONTOPICS = "MY_NOTIFICATION_TOPICS";
+  MY_PROFILE_DATA = "MY_PROFILE_DATA";
   backend: any;
 
   constructor(
@@ -75,6 +76,7 @@ export class ProfilePage implements OnInit {
   getProfileData() {
     this.profileSvc.getProfile().subscribe(result => {
       this.profile = result;
+      this.storage.set(this.MY_PROFILE_DATA, JSON.stringify(this.profile));
     });
   }
 
@@ -109,5 +111,8 @@ export class ProfilePage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
 
     console.log("Loading dismissed!");
+  }
+  doEdit() {
+    this.router.navigateByUrl("profile-edit");
   }
 }

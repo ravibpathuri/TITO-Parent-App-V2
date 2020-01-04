@@ -17,6 +17,7 @@ import { Storage } from "@ionic/storage";
 import { UserData } from "./providers/user-data";
 import { StudentSvcProvider, User } from "./providers/providers";
 import { FCM } from "@ionic-native/fcm/ngx";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-root",
@@ -68,6 +69,7 @@ export class AppComponent implements OnInit {
     public profileSvc: StudentSvcProvider,
     public user: User,
     private fcm: FCM,
+    private sanitizer: DomSanitizer,
     public alertController: AlertController
   ) {
     this.initializeApp();
