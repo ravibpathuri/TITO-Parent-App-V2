@@ -144,6 +144,10 @@ const routes: Routes = [
   {
     path: 'communication-details',
     loadChildren: () => import('./pages/communication-details/communication-details.module').then( m => m.CommunicationDetailsPageModule)
+  },
+  {
+    path: 'profile-edit',
+    loadChildren: () => import('./pages/profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
   }
 
 ];

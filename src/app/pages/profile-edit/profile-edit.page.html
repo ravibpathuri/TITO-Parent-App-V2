@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle> Student Profile</ion-card-subtitle>
+      <ion-card-title>{{profile.student?.studentName}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../../assets/imgs/logo_default.png" />
+        </ion-avatar>
+        <ion-label>
+          <p>{{profile.student?.admissionNumber | uppercase}}</p>
+          <p>{{profile.student?.courseName | uppercase}}</p>
+          <p>{{profile.student?.section | uppercase}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-divider color="primary-light">
+        <b> {{" Father Details" | uppercase}}</b>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>
+          <h4>Name: {{profile.father?.fatherName | uppercase}}</h4>
+          <p>
+            Contact Number: {{profile.father?.fatherContactNumber | uppercase}}
+          </p>
+          <p>Address: {{profile.father?.address | uppercase}}</p>
+          <p>Email: {{profile.father?.email | uppercase}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-divider color="primary-light">
+        <b> {{" Mother Details" | uppercase}}</b>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>
+          <h4>Name: {{profile.mother?.motherName | uppercase}}</h4>
+          <p>
+            Contact Number: {{profile.mother?.motherContactNumber | uppercase}}
+          </p>
+          <p>Address: {{profile.mother?.address | uppercase}}</p>
+          <p>Email: {{profile.mother?.email | uppercase}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit Student Detals</ion-card-title>
+      <ion-card-subtitle>Tap on filed name to edit details</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form #profileEditForm="ngForm" novalidate>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              Student AADHAR
+            </ion-label>
+            <ion-input
+              placeholder="AADHAR"
+              [(ngModel)]="profile.student.aadharNumber"
+              name="studentAADHARNumber"
+              type="text"
+              required
+              #studentAADHARNumber="ngModel"
+              value="{{profile.student?.aadharNumber}}"
+            >
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h5>Father Contact</h5>
+            </ion-label>
+
+            <ion-input
+              placeholder="Father Contact Number"
+              [(ngModel)]="profile.father.fatherContactNumber"
+              name="fatherContactNumber"
+              type="tel"
+              required
+              #fatheraddress="ngModel"
+              value="{{profile.father?.fatherContactNumber}}"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h5>Father Email</h5>
+            </ion-label>
+
+            <ion-input
+              placeholder="Father Email"
+              [(ngModel)]="profile.father.email"
+              name="fatheremail"
+              type="email"
+              #fatheremail="ngModel"
+              email
+              value="{{profile.father?.email}}"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h5>Father Address</h5>
+            </ion-label>
+
+            <ion-input
+              placeholder="address"
+              [(ngModel)]="profile.father.address"
+              name="fatheraddress"
+              type="text"
+              required
+              #fatheraddress="ngModel"
+              value="{{profile.father?.address}}"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h5>Mother Contact</h5>
+            </ion-label>
+
+            <ion-input
+              placeholder="Mother Contact Number"
+              [(ngModel)]="profile.mother.motherContactNumber"
+              name="motherContactNumber"
+              type="tel"
+              required
+              #motherContactNumber="ngModel"
+              value="{{profile.mother?.motherContactNumber}}"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h5>Mother Email</h5>
+            </ion-label>
+
+            <ion-input
+              placeholder="Mother Email"
+              [(ngModel)]="profile.mother.email"
+              name="motheremail"
+              type="email"
+              email
+              #motheremail="ngModel"
+              value="{{profile.mother?.email}}"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h5>Address</h5>
+            </ion-label>
+
+            <ion-input
+              placeholder="address"
+              [(ngModel)]="profile.mother.address"
+              name="motheraddress"
+              type="text"
+              required
+              #motheraddress="ngModel"
+              value="{{profile.mother?.address}}"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-footer>
+          <ion-toolbar>
+            <ion-button
+              (click)="updateProfile(profileEditForm)"
+              type="submit"
+              expand="block"
+              [disabled]="!profileEditForm.valid"
+            >
+              Save
+            </ion-button>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
