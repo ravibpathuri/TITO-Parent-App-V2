@@ -8,20 +8,24 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <kendo-scheduler
-      pading
-      [kendoSchedulerBinding]="events"
-      [selectedDate]="selectedDate"
-      (navigate)="onNavigate($event)"
-      scrollTime="08:00"
-    >
-      <ng-template kendoSchedulerToolbarTemplate>
-        <ul kendoSchedulerToolbarNavigation></ul>
-        <!-- <ul kendoSchedulerToolbarViewSelector></ul> -->
-      </ng-template>
-      <kendo-scheduler-day-view startTime="07:00"> </kendo-scheduler-day-view>
-      <kendo-scheduler-agenda-view> </kendo-scheduler-agenda-view>
-    </kendo-scheduler>
-  </ion-item>
+  <ion-item-divider color="light">
+    <ion-label>
+      <p>Class: <b>{{studentInfo.Student?.className}}</b></p>
+      <p>Section: <b>{{studentInfo.Student?.section}}</b></p>
+    </ion-label>
+  </ion-item-divider>
+
+  <kendo-scheduler
+    pading
+    [kendoSchedulerBinding]="events"
+    [selectedDate]="selectedDate"
+    scrollTime="08:00"
+  >
+    <ng-template kendoSchedulerToolbarTemplate>
+      <ul kendoSchedulerToolbarNavigation></ul>
+      <ul kendoSchedulerToolbarViewSelector></ul>
+    </ng-template>
+    <kendo-scheduler-day-view startTime="07:00"> </kendo-scheduler-day-view>
+    <kendo-scheduler-agenda-view> </kendo-scheduler-agenda-view>
+  </kendo-scheduler>
 </ion-content>

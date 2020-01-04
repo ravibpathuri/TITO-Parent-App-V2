@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+
+import { Storage } from "@ionic/storage";
 import {
   SchedulerEvent,
   CreateFormGroupArgs,
@@ -17,17 +19,22 @@ import { AnimationBuilder } from "@angular/animations";
 @Component({
   selector: "time-table",
   templateUrl: "./time-table.page.html",
-  styles: [
-    "node_modules/@progress/kendo-theme-bootstrap/dist/all.css",
-    "node_modules/bootstrap/dist/css/bootstrap.min.css"
-  ]
+  styleUrls: ["./time-table.page.scss"]
 })
 export class TimeTablePage implements OnInit {
   public selectedDate: Date = displayDate;
   public events: SchedulerEvent[] = sampleData;
-  constructor() {}
+  public studentInfo: any = {};
+  constructor(private storage: Storage) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storage.get("currentUser").then(data => {
+      if (data) {
+        this.studentInfo = JSON.parse(data);
+        console.log(this.studentInfo.Student);
+      }
+    });
+  }
 
   public onNavigate(e: NavigateEvent): void {
     if (e.action.type === "focus-prev" || e.action.type === "focus-next") {
