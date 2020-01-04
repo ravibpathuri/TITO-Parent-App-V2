@@ -46,7 +46,8 @@ export class AppComponent implements OnInit {
     { title: "Transport", url: "/transport-details", icon: "bus" },
     { title: "Photos", url: "/photos", icon: "images" },
     { title: "Update Password", url: "/reset-password", icon: "key" },
-    { title: "Communicate", url: "/communication", icon: "chatbubbles" }
+    { title: "Communicate", url: "/communication", icon: "chatbubbles" },
+    { title: "Timetable", url: "/time-table", icon: "chatbubbles" }
   ];
   loggedIn = true;
   dark = false;

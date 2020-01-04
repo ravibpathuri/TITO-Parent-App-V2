@@ -144,6 +144,10 @@ const routes: Routes = [
   {
     path: 'communication-details',
     loadChildren: () => import('./pages/communication-details/communication-details.module').then( m => m.CommunicationDetailsPageModule)
+  },
+  {
+    path: 'time-table',
+    loadChildren: () => import('./pages/time-table/time-table.module').then( m => m.TimeTablePageModule)
   }
 
 ];
