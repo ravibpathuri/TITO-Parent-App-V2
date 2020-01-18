@@ -1,0 +1,31 @@
+-----------------
+PRE-STEPS:
+----------
+set ANDROID_HOME,JAVA_HOME,JAVA_SDK,GRADLE,ZIPALIGN and use these variables in PATH
+
+ANDROID_HOME: C:\Users\Predifast Tech\AppData\Local\Android\Sdk
+JAVA_HOME: C:\Program Files\Java\jdk1.8.0_241\
+JAVA_SDK: C:\Program Files\Java\jdk1.8.0_241\bin
+GRADLE: C:\Work\gradle-6.1\bin
+ZIPALIGN: C:\Users\Predifast Tech\AppData\Local\Android\Sdk\build-tools\29.0.1
+
+Note: download graddle from https://gradle.org/install/
+
+-----------------
+END OF PRE-STEPS:
+-----------------
+
+Step-1: 
+--------------------------------------------
+ionic cordova build android --prod --release
+--------------------------------------------
+
+step-2: 
+------------------------------------------------------------------------------------------------------------------------------------------
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore tito-parent-android-key.keystore app-release-unsigned.apk tito-parent-android
+------------------------------------------------------------------------------------------------------------------------------------------
+
+step-3: 
+-------------------------------------------------------------
+zipalign -v 4 app-release-unsigned.apk TITO-Parent.apk
+-------------------------------------------------------------
