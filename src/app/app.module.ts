@@ -46,7 +46,6 @@ import { Toast } from "@ionic-native/toast/ngx";
     User,
     Api,
     Platform,
-    Storage,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenIntercepter,
