@@ -21,6 +21,9 @@ import {
   User
 } from "./providers/providers";
 import { Toast } from "@ionic-native/toast/ngx";
+import { AppCenterAnalytics } from "@ionic-native/app-center-analytics/ngx";
+import { AppCenterCrashes } from "@ionic-native/app-center-crashes/ngx";
+import { AppCenterPush } from "@ionic-native/app-center-push/ngx";
 
 @NgModule({
   imports: [
@@ -50,7 +53,10 @@ import { Toast } from "@ionic-native/toast/ngx";
       provide: HTTP_INTERCEPTORS,
       useClass: TokenIntercepter,
       multi: true
-    }
+    },
+    AppCenterAnalytics,
+    AppCenterCrashes,
+    AppCenterPush
   ],
   bootstrap: [AppComponent]
 })

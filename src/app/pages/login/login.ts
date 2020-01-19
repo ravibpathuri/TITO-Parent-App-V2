@@ -9,6 +9,7 @@ import { UserData } from "../../providers/user-data";
 
 import { UserOptions, UserForm } from "../../interfaces/user-options";
 import { StudentSvcProvider, User } from "../../providers/providers";
+import { AppCenterAnalytics } from "@ionic-native/app-center-analytics/ngx";
 
 @Component({
   selector: "page-login",
@@ -39,13 +40,12 @@ export class LoginPage {
     private platform: Platform,
     public storage: Storage,
     public userSvc: StudentSvcProvider,
-    private user: User
+    private user: User,
+    private appCenterAnalytics: AppCenterAnalytics
   ) {}
 
   onLogin(form: NgForm) {
     this.submitted = true;
-
-    console.log(this.login);
 
     if (form.valid) {
       this.account.ParentLoginId = this.login.username;
@@ -54,13 +54,31 @@ export class LoginPage {
       this.user.login(this.account).subscribe(
         respose => {
           this.user._loggedIn(respose);
+
           if (this.platform.is("android")) {
+            this.appCenterAnalytics.setEnabled(true).then(() => {
+              this.appCenterAnalytics
+                .trackEvent("LOGIN_SUCCESS", {
+                  UserName: this.login.username,
+                  GroupCode: this.login.GroupCode
+                })
+                .then(() => {
+                  console.log("Custom event tracked");
+                });
+            });
+
             this.loadFCM();
           }
           this.router.navigateByUrl("/users-list");
         },
         err => {
-          console.log(err);
+          if (this.platform.is("android")) {
+            this.appCenterAnalytics.setEnabled(true).then(() => {
+              this.appCenterAnalytics.trackEvent("LOGIN_FAILURE", {
+                err: err
+              });
+            });
+          }
         }
       );
     }
