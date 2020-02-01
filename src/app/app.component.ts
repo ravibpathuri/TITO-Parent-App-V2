@@ -47,7 +47,11 @@ export class AppComponent implements OnInit {
     { title: "Transport", url: "/transport-details", icon: "bus" },
     { title: "Photos", url: "/photos", icon: "images" },
     { title: "Update Password", url: "/reset-password", icon: "key" },
-    { title: "Communicate", url: "/communication", icon: "chatbubbles" },
+    {
+      title: "Communicate",
+      url: "/querys/tabs/communications",
+      icon: "chatbubbles"
+    },
     { title: "Timetable", url: "/time-table", icon: "calendar" }
   ];
   loggedIn = true;
@@ -73,10 +77,10 @@ export class AppComponent implements OnInit {
     public alertController: AlertController
   ) {
     this.initializeApp();
+    this.checkLoginStatus();
   }
 
   async ngOnInit() {
-    this.checkLoginStatus();
     //this.listenForLoginEvents();
 
     this.swUpdate.available.subscribe(async res => {

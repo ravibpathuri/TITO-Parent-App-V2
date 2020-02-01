@@ -152,6 +152,10 @@ const routes: Routes = [
   {
     path: 'time-table',
     loadChildren: () => import('./pages/time-table/time-table.module').then( m => m.TimeTablePageModule)
+  },
+  {
+    path: 'querys',
+    loadChildren: () => import('./pages/querys/querys.module').then( m => m.QuerysPageModule)
   }
 
 ];
