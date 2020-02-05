@@ -11,29 +11,15 @@
   <ion-card *ngFor="let item of holidays">
     <ion-card-header>
       <ion-item>
-        <ion-label class="ion-text-wrap"> <b>{{item.title}}</b></ion-label>
-        <ion-badge color="primary" slot="end">
-          {{item.ActivityDate |date:'d MMM yyyy'}}
-        </ion-badge>
+        <ion-label class="ion-text-wrap">
+          <b>{{item.description}}</b></ion-label
+        >
       </ion-item>
     </ion-card-header>
     <ion-card-content>
-      <div [innerHTML]="item.description"></div>
+      <div><b>Occassion :{{item.description}}</b></div>
+      <div><b>From : {{item.start_date |date:'d MMM yyyy'}}</b></div>
+      <div><b>To : {{item.end_date |date:'d MMM yyyy'}}</b></div>
     </ion-card-content>
-
-    <div *ngIf="item.documentid; then thenBlock"></div>
-    <ng-template #thenBlock>
-      <ion-footer>
-        <ion-toolbar>
-          <ion-button
-            size="small"
-            slot="end"
-            href="https://applebee-tito-qa.azurewebsites.net/FileDownload/downloadFile?guid={{item.documentGUID}}&refId={{item.ActivityId}}"
-          >
-            Download <ion-icon name="download"></ion-icon>
-          </ion-button>
-        </ion-toolbar>
-      </ion-footer>
-    </ng-template>
   </ion-card>
 </ion-content>
