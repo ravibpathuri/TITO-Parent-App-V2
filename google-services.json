@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "176300220727",
-    "firebase_url": "https://tito-parent-app-demo.firebaseio.com",
-    "project_id": "tito-parent-app-demo",
-    "storage_bucket": "tito-parent-app-demo.appspot.com"
+    "project_number": "106414757361",
+    "firebase_url": "https://tito-edu-parent.firebaseio.com",
+    "project_id": "tito-edu-parent",
+    "storage_bucket": "tito-edu-parent.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:176300220727:android:5f18db9cabb6deecbefab2",
+        "mobilesdk_app_id": "1:106414757361:android:9e9e9ae813274278c8a050",
         "android_client_info": {
-          "package_name": "com.tito.parentapp_demo"
+          "package_name": "com.tito.parentapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "176300220727-fk7kn911fhpj6gvfgcfqrk7scjv7drc3.apps.googleusercontent.com",
+          "client_id": "106414757361-f1tpmbvh2s6ef01jshbotm6h9sd5ha3t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAz-UG9yV2fsyOpMiFgaYKZMKGrZ9-aUAU"
+          "current_key": "AIzaSyD2aPPZeUvIZZoyNQnMWmH5KtR5i5ix4Io"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "176300220727-fk7kn911fhpj6gvfgcfqrk7scjv7drc3.apps.googleusercontent.com",
+              "client_id": "106414757361-f1tpmbvh2s6ef01jshbotm6h9sd5ha3t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -25,6 +25,8 @@ step-2:
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore tito-parent-android-key.keystore app-release-unsigned.apk tito-parent-android
 ------------------------------------------------------------------------------------------------------------------------------------------
 
+Password: Pa$word01
+
 step-3: 
 -------------------------------------------------------------
 zipalign -v 4 app-release-unsigned.apk TITO-Parent.apk
