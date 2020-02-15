@@ -130,4 +130,8 @@ export class StudentSvcProvider {
     let req = this.api.post("CreateFeedback", data);
     return req;
   }
+  getTimeTable() {
+    let seq = this.api.get("getTimeTable");
+    return seq;
+  }
 }
