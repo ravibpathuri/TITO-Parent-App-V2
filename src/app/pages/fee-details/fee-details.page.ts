@@ -1,8 +1,12 @@
 import { Component, OnInit } from "@angular/core";
+
+import { Router, NavigationExtras } from "@angular/router";
 import {
   NavController,
   ToastController,
-  LoadingController
+  LoadingController,
+  IonNavPush,
+  IonNav
 } from "@ionic/angular";
 import { StudentSvcProvider } from "../../providers/providers";
 
@@ -18,6 +22,7 @@ export class FeeDetailsPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
+    public router: Router,
     public toastCtrl: ToastController,
     public loadingController: LoadingController,
     public feeSvc: StudentSvcProvider
@@ -44,7 +49,39 @@ export class FeeDetailsPage implements OnInit {
 
       term.totalDue = totalDue;
       term.totalFee = totalFee;
+      term.isChecked = false;
     });
     return;
+  }
+
+  proceedToPay() {
+    console.log(this.feeDetails);
+
+    // reconcile term check boxes
+    for (let i = 3; i >= 1; i--) {
+      let t = this.feeDetails.find(f => f.feeTerm == i);
+      let t2 = this.feeDetails.find(f => f.feeTerm == i - 1);
+      if (t.isChecked && t2) t2.isChecked = true;
+    }
+    console.log(this.feeDetails);
+    // this.router.navigateByUrl("/fee-online-payment",);
+    //this.navCtrl.navigateForward('',)
+
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: "name",
+        parms: this.feeDetails
+      }
+    };
+    this.navCtrl.navigateForward("/fee-online-payment", navigationExtras);
+  }
+
+  feeTermSelected(feeTerm) {
+    let termNumber = parseInt(feeTerm.feeTerm);
+
+    for (let i = termNumber - 1; i >= 1; i--) {
+      let t = this.feeDetails.find(f => f.feeTerm == i);
+      if (feeTerm.isChecked && t) t.isChecked = true;
+    }
   }
 }

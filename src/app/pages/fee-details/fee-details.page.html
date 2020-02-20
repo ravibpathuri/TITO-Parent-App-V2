@@ -15,10 +15,14 @@
       </ion-item-divider>
     </ion-item-group>
     <ion-item-group *ngFor="let fee of feeDetails">
-      <ion-item-divider  class="ion-padding" >
-       <b> Term {{ fee.feeTerm }}</b>
+      <ion-item-divider class="ion-padding">
+        <ion-checkbox
+          *ngIf="fee.totalDue>0"
+          [(ngModel)]="fee.isChecked"
+          (ionChange)="feeTermSelected(fee)"
+        ></ion-checkbox>
+        <b class="ion-padding-start"> Term {{ fee.feeTerm }}</b>
         <ion-label color="danger" slot="end">
-          
           Due on: {{ fee.dueDate | date: "d MMM yyyy" }}
         </ion-label>
       </ion-item-divider>
@@ -34,8 +38,8 @@
     </ion-item-group>
     <ion-item-group>
       <ion-item-divider></ion-item-divider>
-      <ion-button type="button" disabled="true" expand="block">
-        Proceed to pay (Coming Soon)
+      <ion-button type="button" expand="block" (click)="proceedToPay()">
+        Proceed to pay
       </ion-button>
     </ion-item-group>
   </ion-list>

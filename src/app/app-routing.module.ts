@@ -156,6 +156,10 @@ const routes: Routes = [
   {
     path: 'querys',
     loadChildren: () => import('./pages/querys/querys.module').then( m => m.QuerysPageModule)
+  },
+  {
+    path: 'fee-online-payment',
+    loadChildren: () => import('./pages/fee-online-payment/fee-online-payment.module').then( m => m.FeeOnlinePaymentPageModule)
   }
 
 ];
