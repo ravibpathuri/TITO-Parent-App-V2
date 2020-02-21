@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
+import { StudentSvcProvider } from "../../providers/providers";
 
 @Component({
   selector: "fee-online-payment",
@@ -15,7 +16,8 @@ export class FeeOnlinePaymentPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private storage: Storage
+    private storage: Storage,
+    private studentSvc: StudentSvcProvider
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -45,19 +47,25 @@ export class FeeOnlinePaymentPage implements OnInit {
   }
 
   confirmAndPay() {
-    // TODO: make api call to created order the selected fee coponent details
-    this.presentRazorPayWindow();
+    this.studentSvc
+      .createRazorpayOrder(this.selectedTerms)
+      .subscribe(result => {
+        this.presentRazorPayWindow(result);
+      });
+    //this.presentRazorPayWindow();
   }
 
-  presentRazorPayWindow() {
+  presentRazorPayWindow(result) {
     var options = {
       description: `Feepayment towards ${this.profileData.student.admissionNumber}`,
-      image: `${this.profileData.student.profileImage}`, // replace this with school logo
+      image: `${result.schoolLogo ||
+        "http://www.tito-edu.com/wp-content/uploads/2019/12/cropped-logo1.png"}`, // replace this with school logo
       currency: "INR",
-      key: "rzp_test_JpQZqqrSAn7cRl",
-      order_id: "order_EInCeyNGAaoIe2",
+      key: "rzp_test_partner_EJ2yQTllazhIsf",
+      order_id: `${result.order_id}`,
       amount: this.selectedTerms.grandTotal,
-      name: "TITO Edu", // replace this with school name
+      account_id: result.account_id,
+      name: `${result.schoolName}`, // replace this with school name
       prefill: {
         email: this.profileData.father.email,
         contact: this.profileData.father.fatherContactNumber,
@@ -69,7 +77,6 @@ export class FeeOnlinePaymentPage implements OnInit {
     };
 
     var successCallback = function(success) {
-      alert("payment_id: " + success.razorpay_payment_id);
       var orderId = success.razorpay_order_id;
       var signature = success.razorpay_signature;
     };
