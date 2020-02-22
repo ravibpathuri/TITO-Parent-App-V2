@@ -17,6 +17,7 @@ export class Api {
 
   constructor(public http: HttpClient) {
     this.url = "https://applebee-tito-qa.azurewebsites.net/api/v1/parent";
+    //this.url = "http://localhost:5029/api/v1/parent";
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {

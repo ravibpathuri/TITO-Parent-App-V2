@@ -32,6 +32,7 @@ export class ProfileEditPage implements OnInit {
   updateProfile(form: NgForm) {
     {
       if (form.valid) {
+        console.log(this.profile);
         this.profileSvc.saveProfile(this.profile).subscribe(
           resp => {
             //console.log(resp);
