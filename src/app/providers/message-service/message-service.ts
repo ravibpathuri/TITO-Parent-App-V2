@@ -134,4 +134,9 @@ export class StudentSvcProvider {
     let seq = this.api.get("getTimeTable");
     return seq;
   }
+
+  createRazorpayOrder(data) {
+    let seq = this.api.post("CreateRazorpayOrder", data);
+    return seq;
+  }
 }

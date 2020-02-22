@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/fee"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fee Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        <b>Your Contact Details</b>
+      </ion-item-divider>
+    </ion-item-group>
+    <ion-item>
+      <ion-label> Name</ion-label>
+      <p item-end>{{ profileData.student.studentName}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label> Grade/Section</ion-label>
+      <p item-end>
+        {{ profileData.student.courseName}} >> {{ profileData.student.section}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <ion-label> Admission Number</ion-label>
+      <p item-end>{{ profileData.student.admissionNumber}}</p>
+    </ion-item>
+    <ion-item *ngIf="profileData.father.fatherName">
+      <ion-label> Parent Name</ion-label>
+      <p item-end>{{ profileData.father.fatherName}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label> Parent Phone Number</ion-label>
+      <p item-end>{{ profileData.father.fatherContactNumber}}</p>
+    </ion-item>
+    <ion-item *ngIf="profileData.father.email">
+      <ion-label> Parent Email</ion-label>
+      <p item-end>{{ profileData.father.email}}</p>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        <b>Fee components</b>
+      </ion-item-divider>
+    </ion-item-group>
+    <ion-item *ngFor="let fee of selectedTerms">
+      <ion-label> Term {{ fee.feeTerm }} Due</ion-label>
+      <p item-end>{{ fee.totalDue | currency: "INR" }}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label> <strong>Total</strong></ion-label>
+      <p item-end>
+        <strong>{{ selectedTerms.grandTotal | currency: "INR" }}</strong>
+      </p>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        <b>Payment Options</b>
+      </ion-item-divider>
+    </ion-item-group>
+    <ion-item>
+      <img
+        slot="start"
+        src="../../../assets/imgs/Razorpay.png"
+        style="width: 150px"
+      />
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider></ion-item-divider>
+      <ion-button type="button" expand="block" (click)="confirmAndPay()">
+        Confirm & Pay
+      </ion-button>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
