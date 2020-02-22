@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
 import { StudentSvcProvider } from "../../providers/providers";
+import { AppCenterAnalytics } from "@ionic-native/app-center-analytics/ngx";
+import { Platform } from "@ionic/angular";
 
 @Component({
   selector: "fee-online-payment",
@@ -17,7 +19,9 @@ export class FeeOnlinePaymentPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private storage: Storage,
-    private studentSvc: StudentSvcProvider
+    private platform: Platform,
+    private studentSvc: StudentSvcProvider,
+    private appCenterAnalytics: AppCenterAnalytics
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -47,15 +51,30 @@ export class FeeOnlinePaymentPage implements OnInit {
   }
 
   confirmAndPay() {
+    let self = this;
     this.studentSvc
       .createRazorpayOrder(this.selectedTerms)
-      .subscribe(result => {
+      .subscribe((result: any) => {
+        if (self.platform.is("mobile")) {
+          self.appCenterAnalytics.setEnabled(true).then(() => {
+            self.appCenterAnalytics
+              .trackEvent("PROCEDED_TO_PAYMENT", {
+                admissionNumber: self.profileData.student.admissionNumber,
+                orderData: result,
+                feeDetails: self.feeDetails
+              })
+              .then(() => {});
+          });
+        }
+
         this.presentRazorPayWindow(result);
       });
     //this.presentRazorPayWindow();
   }
 
   presentRazorPayWindow(result) {
+    let self = this;
+
     var options = {
       description: `Feepayment towards ${this.profileData.student.admissionNumber}`,
       image: `${result.schoolLogo ||
@@ -79,9 +98,37 @@ export class FeeOnlinePaymentPage implements OnInit {
     var successCallback = function(success) {
       var orderId = success.razorpay_order_id;
       var signature = success.razorpay_signature;
+      console.log(success);
+      alert(`Your payment is successful for Order Id: ${orderId}`);
+
+      if (self.platform.is("mobile")) {
+        self.appCenterAnalytics.setEnabled(true).then(() => {
+          self.appCenterAnalytics
+            .trackEvent("PAYMENT_SUCCESS", {
+              admissionNumber: self.profileData.student.admissionNumber,
+              response: success,
+              feeDetails: self.feeDetails
+            })
+            .then(() => {});
+        });
+      }
+
+      self.router.navigateByUrl("app/tabs/profile");
     };
 
     var cancelCallback = function(error) {
+      if (self.platform.is("mobile")) {
+        self.appCenterAnalytics.setEnabled(true).then(() => {
+          self.appCenterAnalytics
+            .trackEvent("PAYMENT_FAILED", {
+              admissionNumber: self.profileData.student.admissionNumber,
+              response: error,
+              feeDetails: self.feeDetails
+            })
+            .then(() => {});
+        });
+      }
+
       alert(error.description + " (Error " + error.code + ")");
     };
 
